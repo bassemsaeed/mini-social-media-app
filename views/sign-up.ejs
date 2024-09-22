@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/sign-up.css" />
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <main>
+      <form action="/sign-up" method="POST">
+        <h1>Create An Account</h1>
+        <div class="sign-up-fields">
+          <div class="first-name">
+            <label for="f-name"
+              >First Name <span style="font-size: 12px; color: brown">*</span>
+              <span class="sign-up-error">
+             
+              </span>
+            </label>
+            <input
+              type="text"
+              name="first_name"
+              id="f-name"
+              placeholder="type your first name"
+              required
+            />
+          </div>
+          <div class="last-name">
+            <label for="l-name"
+              >Last Name <span style="font-size: 12px; color: brown">*</span>
+              <span class="sign-up-error"></span>
+            </label>
+            <input
+              type="text"
+              name="type your last_name"
+              id="l-name"
+              placeholder="type your last name"
+              required
+            />
+          </div>
+          <div class="user-name">
+            <label for="user-name"
+              >User Name <span style="font-size: 12px; color: brown">*</span>
+              <span class="sign-up-error"></span>
+            </label>
+            <input
+              type="text"
+              name="user_name"
+              id="user-name"
+              placeholder="type your user name"
+              required
+            />
+          </div>
+          <div class="password">
+            <label for="passwd">Password <span style="font-size: 12px; color: brown">*</span>
+                <span class="sign-up-error"></span>
+            </label>
+            <input type="password" id="passwd" name="user_password" placeholder="type your password" required>
+          </div>
+          <div class="confirm-password">
+            <label for="c-passwd">Confirm Password <span style="font-size: 12px; color: brown">*</span>
+                <span class="sign-up-error"></span>
+            </label>
+            <input type="password" id="c-passwd" name="confirmed_user_password" placeholder="re-type the password" required>
+          </div>
+
+          <div class="submit-btn">
+            <button type="submit">Sign Up</button>
+          </div>
+
+          <div class="log-in-option">
+            Already have an account? <a href="/log-in">
+                Log In
+            </a>
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

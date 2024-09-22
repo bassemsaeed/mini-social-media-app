@@ -1,0 +1,189 @@
+:root {
+
+    --bg-color: #121212;
+    --text-color: #f5f3f3;
+    --heading-font-family: "Inter", sans-serif;
+    --text-font-family: "Roboto Mono", monospace;
+
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    margin-top: -20px;
+    width: 40%;
+    height: 90%;
+    border: 0.1px solid rgb(99, 99, 99);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > h1 {
+    color: var(--text-color);
+    font-family: var(--heading-font-family);
+}
+
+.sign-up-fields {
+   
+    width: 88%;
+    margin-top: 15px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+}
+
+
+.sign-up-fields > div {
+    width: 100%;
+    height: 80px;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sign-up-fields > div > label {
+    font-size: 16px;
+    font-family: var(--text-font-family);
+    color: var(--text-color);
+}
+
+.sign-up-fields > div > input {
+    font-size: 16px;
+    font-family: var(--text-font-family);
+    color: var(--text-color);
+    height: 50px;
+    border-radius: 3px;
+    background-color: #000000c2;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    border: 0.1px solid rgba(153, 153, 153, 0.733);
+    padding: 0 10px;
+}
+
+.sign-up-fields > div > input:focus {
+    border: 2px solid rgb(137, 218, 255);
+}
+
+.submit-btn {
+   
+   display: flex;
+   justify-content: center;
+  
+}
+
+.submit-btn > button {
+    height: 50px;
+    background-color: black;
+    color: var(--text-color);
+    font-size: 15.5px;
+    font-family: var(--text-font-family);
+    cursor: pointer;
+    border-radius: 7px;
+    border: 0;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.submit-btn > button:hover {
+    background-color: rgba(0, 0, 0, 0.596);
+}
+
+.log-in-option {
+   
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 0.7px;
+    color: var(--text-color);
+    font-family: var(--text-font-family);
+}
+
+.log-in-option > a {
+    color: rgb(9, 167, 9);
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.log-in-option > a:hover {
+    color: rgb(46, 177, 138);
+}
+
+.sign-up-error {
+    color: rgb(167, 3, 3);
+    font-family: var(--text-font-family);
+    font-size: 14px;
+    font-style: italic;
+}
+
+
+@media (max-width: 965px) {
+    form {
+        margin-top: -20px;
+        width: 50%;
+        height: 90%;
+        border: 0.1px solid rgb(99, 99, 99);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 695px) {
+    form {
+        margin-top: -20px;
+        width: 75%;
+        height: 90%;
+        border: 0.1px solid rgb(99, 99, 99);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 485px) {
+    form {
+        margin-top: -5px;
+        width: 98%;
+        height: 98%;
+        border: 0.1px solid rgb(99, 99, 99);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-up-fields {
+   
+        width: 88%;
+        margin-top: 15px;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    
+    }
+}
