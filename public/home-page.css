@@ -1,0 +1,92 @@
+:root {
+
+    --bg-color: #121212;
+    --text-color: #f5f3f3;
+    --heading-font-family: "Inter", sans-serif;
+    --text-font-family: "Roboto Mono", monospace;
+
+}
+
+*, ::after, ::before {
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    margin: 0;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    
+}
+
+nav {
+    color: var(--text-color);
+    font-family: var(--heading-font-family);
+   
+    height: 90px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links > ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+ 
+    gap: 30px;
+
+}
+
+.nav-links > ul > li {
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--heading-font-family);
+}
+
+.nav-links > ul > li > a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: var(--heading-font-family);    
+}
+
+.member-profile-icon-name {
+   
+    margin-right: 25px;
+    min-width: 150px;
+    height: 50px;
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.prof-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+
+}
+
+.prof-pic > img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+
+}
+
+.user-name {
+    color: var(--text-color);
+    font-family: var(--heading-font-family);
+    font-weight: 500;
+    user-select: none;
+}

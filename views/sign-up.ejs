@@ -26,55 +26,97 @@
           <div class="first-name">
             <label for="f-name"
               >First Name <span style="font-size: 12px; color: brown">*</span>
-              <span class="sign-up-error">
-             
-              </span>
+            
+                <% if(locals.errs) { %>
+                  <% const result = errs.filter((err) => err.path === 'first_name'); %>
+                  <% if (result.length > 0) { %>
+                    <% result.forEach((err) => { %>
+                      <span class="sign-up-error"><%= err.msg %></span>
+                    <% }); %>
+                  <% } %>
+                <% } %>
+              
             </label>
             <input
               type="text"
               name="first_name"
               id="f-name"
               placeholder="type your first name"
+              value="<% if(locals.inputs) { %><%=inputs.first_name.trim()%> <%}%>"
               required
             />
           </div>
           <div class="last-name">
             <label for="l-name"
               >Last Name <span style="font-size: 12px; color: brown">*</span>
-              <span class="sign-up-error"></span>
+              <% if(locals.errs) { %>
+                <% const result = errs.filter((err) => err.path === 'last_name'); %>
+                <% if (result.length > 0) { %>
+                  <% result.forEach((err) => { %>
+                    <span class="sign-up-error"><%= err.msg %></span>
+                  <% }); %>
+                <% } %>
+              <% } %>
             </label>
             <input
               type="text"
-              name="type your last_name"
+              name="last_name"
               id="l-name"
               placeholder="type your last name"
+              value="<% if(locals.inputs) { %><%= inputs.last_name.trim() %> <%}%>"
               required
             />
           </div>
           <div class="user-name">
             <label for="user-name"
               >User Name <span style="font-size: 12px; color: brown">*</span>
-              <span class="sign-up-error"></span>
+              <% if(locals.errs) { %>
+                <% const result = errs.filter((err) => err.path === 'user_name'); %>
+                <% if (result.length > 0) { %>
+                  <% result.forEach((err) => { %>
+                    <span class="sign-up-error"><%= err.msg %></span>
+                  <% }); %>
+                <% } %>
+              <% } %>
             </label>
             <input
               type="text"
               name="user_name"
               id="user-name"
               placeholder="type your user name"
+             
+              value="<% if(locals.inputs) { %><%= inputs.user_name.trim() %><%}%>"
+              
               required
             />
           </div>
           <div class="password">
             <label for="passwd">Password <span style="font-size: 12px; color: brown">*</span>
-                <span class="sign-up-error"></span>
+              <% if(locals.errs) { %>
+                <% const result = errs.filter((err) => err.path === 'user_password'); %>
+                <% if (result.length > 0) { %>
+                  <% result.forEach((err) => { %>
+                    <span class="sign-up-error"><%= err.msg %></span>
+
+                  <% }); %>
+                <% } %>
+              <% } %>
             </label>
-            <input type="password" id="passwd" name="user_password" placeholder="type your password" required>
+            <input type="password" id="passwd" name="user_password" placeholder="type your password"  value="<% if(locals.inputs) { %><%= inputs.user_password.trim() %><%}%>" required>
           </div>
           <div class="confirm-password">
             <label for="c-passwd">Confirm Password <span style="font-size: 12px; color: brown">*</span>
-                <span class="sign-up-error"></span>
+              <% if(locals.errs) { %>
+                <% const result = errs.filter((err) => err.path === 'confirmed_user_password'); %>
+                <% if (result.length > 0) { %>
+                  <% result.forEach((err) => { %>
+                    <span class="sign-up-error"><%= err.msg %></span>
+                  <% }); %>
+                <% } %>
+              <% } %>
             </label>
-            <input type="password" id="c-passwd" name="confirmed_user_password" placeholder="re-type the password" required>
+            <input type="password" id="c-passwd" name="confirmed_user_password" placeholder="re-type the password" 
+            value="<%if(locals.inputs){%><%= inputs.confirmed_user_password.trim()%><%}%>" required>
           </div>
 
           <div class="submit-btn">

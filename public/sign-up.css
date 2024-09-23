@@ -9,6 +9,7 @@
 
 *, ::after, ::before {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body, html {
@@ -38,6 +39,7 @@ form {
 form > h1 {
     color: var(--text-color);
     font-family: var(--heading-font-family);
+    text-align: center;
 }
 
 .sign-up-fields {
@@ -54,7 +56,7 @@ form > h1 {
 
 .sign-up-fields > div {
     width: 100%;
-    height: 80px;
+    min-height: 80px;
    
     display: flex;
     flex-direction: column;
