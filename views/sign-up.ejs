@@ -109,7 +109,7 @@
               <% if(locals.errs) { %>
                 <% const result = errs.filter((err) => err.path === 'confirmed_user_password'); %>
                 <% if (result.length > 0) { %>
-                  <% result.forEach((err) => { %>
+                  <% result.forEach((err, i) => { %>
                     <span class="sign-up-error"><%= err.msg %></span>
                   <% }); %>
                 <% } %>

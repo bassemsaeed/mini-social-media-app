@@ -88,7 +88,9 @@ form > button:hover {
     background-color: #000000a4;
 }
 
-
+form > span {
+    font-family: var(--text-font-family);
+}
 
 @media (max-width: 965px) {
     form {
@@ -110,7 +112,7 @@ form > button:hover {
 
 @media (max-width: 485px) {
     form {
-      
+        margin-top: 0px;
         width: 98%;
         height: 98%;
         

@@ -15,26 +15,22 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/log-in.css">
-    <title>Log In</title>
+    <link rel="stylesheet" href="/edit-prof-pic.css">
+    <title>Request to be an admin</title>
   </head>
   <body>
-
     <main>
-        <form action="/login" method="POST">
-            <h1>Sign In-to Your Account</h1>
-            <div class="credentials-inputs">
-                <input type="text" placeholder="User name" name="username" required>
+        <form action="/admin" method="POST">
+            <h2>Enter the admin password to become one and have the delete option</h2>
+            <input type="text" name="admin_pass" placeholder="Enter a password (pass is 1234)" required>
+            <button type="submit">Send Request</button>
 
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
-            <button type="submit">Log In</button>
-
-            <% if(locals.authErrors) { %>
-                  <span style="color: red; text-align: center;"><%= authErrors[0] %></span>
-            <% } %>
+           <% if(locals.err) { %>
+                <ul>
+                    <li style="color: red;"> <%= err %></li>
+                </ul>
+           <% } %>
         </form>
     </main>
-
   </body>
 </html>

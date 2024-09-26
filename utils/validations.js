@@ -46,8 +46,7 @@ const signUpValidation = [
     .trim()
     .isLength({ min: 8 }) // Enforce a minimum length (adjust as needed)
     .withMessage('password must be at least 8 chars long')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
-    .withMessage('Password must include lowercase, uppercase, number, and symbol.')
+    
     ,
 
     body('confirmed_user_password')
@@ -66,4 +65,65 @@ const signUpValidation = [
 
 
 
-export {signUpValidation}
+const pfp_validation = [
+    body('pfp_link')
+      .trim()
+      .matches(/^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i) // Case-insensitive regex
+      .withMessage('Please provide a valid image link ending with .png, .jpg, .jpeg, .gif, or .webp')
+  ];
+
+
+  function timeAgo(dateString) {
+    const now = new Date(); // Current time
+    const pastDate = new Date(dateString); // Convert the input string to a Date object
+    const diffInMilliseconds = now - pastDate; // Difference in milliseconds
+
+    // Time units in milliseconds
+    const seconds = 1000;
+    const minutes = seconds * 60;
+    const hours = minutes * 60;
+    const days = hours * 24;
+    const weeks = days * 7;
+    const months = days * 30.44; // Average days in a month
+    const years = days * 365.25; // Including leap years
+
+    // Calculate the difference in each time unit
+    if (diffInMilliseconds < minutes) {
+        const diffInSeconds = Math.floor(diffInMilliseconds / seconds);
+        return `${diffInSeconds} second${diffInSeconds !== 1 ? 's' : ''} ago`;
+    } else if (diffInMilliseconds < hours) {
+        const diffInMinutes = Math.floor(diffInMilliseconds / minutes);
+        return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+    } else if (diffInMilliseconds < days) {
+        const diffInHours = Math.floor(diffInMilliseconds / hours);
+        return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+    } else if (diffInMilliseconds < weeks) {
+        const diffInDays = Math.floor(diffInMilliseconds / days);
+        return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+    } else if (diffInMilliseconds < months) {
+        const diffInWeeks = Math.floor(diffInMilliseconds / weeks);
+        return `${diffInWeeks} week${diffInWeeks !== 1 ? 's' : ''} ago`;
+    } else if (diffInMilliseconds < years) {
+        const diffInMonths = Math.floor(diffInMilliseconds / months);
+        return `${diffInMonths} month${diffInMonths !== 1 ? 's' : ''} ago`;
+    } else {
+        const diffInYears = Math.floor(diffInMilliseconds / years);
+        return `${diffInYears} year${diffInYears !== 1 ? 's' : ''} ago`;
+    }
+}
+
+// Example usage:
+
+
+
+const isAuth = (req, res, next) => {
+    if(req.isAuthenticated()) {
+        next();
+      } else {
+    
+        res.status(401).json({message: 'Not Authorized.'})
+      }
+}
+
+
+export {signUpValidation, pfp_validation, timeAgo, isAuth}

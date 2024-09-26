@@ -11,6 +11,7 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
@@ -19,42 +20,295 @@
     <title>Vault</title>
   </head>
   <body>
-
     <main>
-        <nav>
-            <div class="nav-links">
-                <ul>
-                    <li>
-                        Club
-                    </li>
+      <nav>
+        <div class="nav-links">
+          <ul>
+            <li>Club</li>
 
-                    <li>
-                        Join
-                    </li>
+            <% if(locals.isAuth) { %>
+            <li>
+              <a href="/join">Join</a>
+            </li>
 
-                    <li>
-                        Admin
-                    </li>
+            <li>
+              <a href="/admin">Admin</a>
+            </li>
+            <% } %>
 
-                    <li>
-                        <a href="/log-in">Log In</a>
-                    </li>
+            <li>
+              <a href="/log-in">Log In</a>
+            </li>
 
-                    <li>
-                        <a href="/sign-up">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="member-profile-icon-name">
-                    <div class="prof-pic">
-                        <img src="https://i.pinimg.com/236x/da/8f/8d/da8f8d65779f6e5f49a448299e9c5725.jpg">
-                    </div>
-                    <div class="user-name">
-                        Bassem Saeed
-                    </div>
-            </div>
-        </nav>
+            <li>
+              <a href="/sign-up">Sign Up</a>
+            </li>
+
+            <% if(locals.isAuth) { %>
+            <li class="log-out-btn">Log Out</li>
+            <% } %>
+          </ul>
+
+          
+          <div class="menu-btn">
+            <span class="material-symbols-outlined">
+              menu
+              </span>
+          </div>
+       
+        </div>
+        <% if(locals.isAuth) { %>
+        <div class="member-profile-icon-name">
+         
+          <div class="prof-pic">
+            <% if(userData.profile_pic !== '') { %>
+                <img src="<%= userData.profile_pic %>" />
+            <% } %>
+          </div>
+    
+          <div class="user-name">
+            <%= userData.first_name %> <%= userData.last_name %> <sup>(<%= userData.status %>)</sup>
+          </div>
+        </div>
+        <% } %>
+      </nav>
+
+     
+      <div class="posts">
+        <% if(locals.isAuth) { %>
+        <div class="auth-user-post-form">
+          <textarea placeholder="What's on your mind, <%= userData.first_name %> ?"></textarea>
+          <button>Post</button>
+        </div>
+        <% } %>
+
+        <div class="users-posts">
+          <h2>Posts</h2>
+
+          <% if(locals.posts) { %>
+            <div>
+
+                <% posts.forEach((post) => { %>
+                    <div class="post">
+                        <div class="post-author-details">
+                          <div class="author-prof-pic">
+                            <% if(locals.isAuth) { %>
+
+                                
+                                <img
+                                src="<%= userData.status === 'member' || userData.status === 'admin' ? post.profile_pic === '' ? 'https://i.pinimg.com/236x/26/91/8c/26918c8eb57f4fc07eade15aada8f81f.jpg': post.profile_pic : post.id === userData.id ? post.profile_pic: 'https://i.pinimg.com/236x/26/91/8c/26918c8eb57f4fc07eade15aada8f81f.jpg'  %>"
+                                alt=""
+                               />
+                           <% } %>
+                          </div>
+                          <div class="author-username">
+                            <%= locals.isAuth ? userData.status !== 'member' && userData.status !== 'admin' ? post.id === userData.id ? '@'+ post.username : '@Anonymous' : '@'+ post.username : '@Anonymous' %>
+                          </div>
+                        </div>
+                        <div class="post-content">
+                                <%= post.content %>
+                        </div>
+          
+                        <div class="post-date"><%= locals.isAuth ? userData.status !== 'member' && userData.status !== 'admin' ? 'time of the post is hidden' : post.created_at.toString().split(" GMT")[0]: 'time of the post is hidden' %></div>
+                       
+                        <% if(locals.userData && locals.userData.status === 'admin') { %>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" data-post-id="<%= post.identifier %>" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                        <% } %>
+                      </div>
+                <% }) %>
+                
+               
+              </div>
+            <% } %>
+          
+        </div>
+      </div>
     </main>
+    <div class="overlay"></div>
+    <div class="sidbar">
+      <div class="nav-links">
+        <ul>
+          <li>Club</li>
 
+          <% if(locals.isAuth) { %>
+          <li>
+            <a href="/join">Join</a>
+          </li>
+
+          <li>
+            <a href="/admin">Admin</a>
+          </li>
+          <% } %>
+
+          <li>
+            <a href="/log-in">Log In</a>
+          </li>
+
+          <li>
+            <a href="/sign-up">Sign Up</a>
+          </li>
+
+          <% if(locals.isAuth) { %>
+          <li class="log-out-btn">Log Out</li>
+          <% } %>
+        </ul>
+     
+      </div>
+    </div>
+    <script>
+      const logOut = document.querySelector(".log-out-btn");
+      const textarea = document.querySelector("textarea");
+      const postBtn = document.querySelector(".auth-user-post-form > button");
+      const edit_prof_pick_btn = document.querySelector(".prof-pic");
+      const posts = document.querySelector(".posts");
+      const overlay = document.querySelector(".overlay");
+      const sidbar = document.querySelector(".sidbar");
+      const log_out_in_sidebar = document.querySelector(".sidbar .log-out-btn");
+
+      const toggle_menu_btn = document.querySelector(".menu-btn > span");
+
+
+
+      toggle_menu_btn.addEventListener("click", () => {
+          overlay.classList.add("show")
+          sidbar.classList.add("show")
+        
+      })
+
+      overlay.addEventListener("click", () => {
+        overlay.classList.remove("show")
+          sidbar.classList.remove("show")
+      })
+      
+
+      
+      let requestInProgress = false;
+
+      posts.addEventListener("click", async (e) => {
+        const target = e.target;
+        
+        
+        if(target.tagName === 'svg' || target.tagName === 'path' || target.tagName === 'line' ) {
+          const svg = target.closest('svg');
+
+          const post_id = svg.getAttribute("data-post-id");
+        
+
+          if (requestInProgress) {
+            
+            return;
+          }
+
+          requestInProgress = true;
+          svg.classList.add("disabled");
+
+          try {
+            
+            const response = await fetch("/post", {
+              method: 'DELETE',
+              headers: {
+                  "Content-Type": "application/json",
+                },
+              body: JSON.stringify({post_id}),
+              }
+            );
+
+            if(!response.ok) {
+              const errors = await response.json();
+              console.log(response.status, errors.message);
+              return;
+            }
+
+            const success = await response.json();
+            console.log(success.message);
+
+            window.location.href = '/';
+            
+          } catch (error) {
+            
+            console.log('Error sending the request to delete: ', error);
+            
+          } finally {
+            svg.classList.remove("disabled");
+            requestInProgress = false;
+          }
+
+          
+          
+          
+          
+        }
+        
+      })
+
+
+      edit_prof_pick_btn.addEventListener("click", (e) => {
+            
+        window.location.href = '/edit-prof-pic';
+
+      });
+      
+
+      postBtn.addEventListener("click", async function () {
+        const post_content = textarea.value.trim();
+
+        if (post_content.length > 1) {
+          try {
+            postBtn.disabled = true;
+            postBtn.style.backgroundColor = 'gray';
+            postBtn.style.cursor = 'no-drop';
+            const response = await fetch("/post", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({post_content}),
+            });
+
+            if(!response.ok) {
+                console.log(response.status, 'Error in getting the response');
+                return;
+            }
+
+            const data = await response.json();
+
+            console.log('Successful post request ', data);
+            window.location.href = "/";
+          } catch (error) {
+            console.log("Error happend while trying to send post: ", error);
+          } finally {
+            postBtn.disabled = false;
+            postBtn.style.backgroundColor = 'black';
+            postBtn.style.cursor = 'pointer';
+          }
+        } else {
+          console.log("not allowed");
+        }
+      });
+
+      log_out_in_sidebar.addEventListener("click", async (e) => {
+        const res = await fetch("/log-out", {
+          method: "POST",
+        });
+
+        if (!res.ok) {
+          console.log("error sending the request");
+        } else {
+          window.location.href = "/";
+        }
+      });
+
+      logOut.addEventListener("click", async (e) => {
+        const res = await fetch("/log-out", {
+          method: "POST",
+        });
+
+        if (!res.ok) {
+          console.log("error sending the request");
+        } else {
+          window.location.href = "/";
+        }
+      });
+    </script>
   </body>
 </html>

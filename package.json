@@ -1,14 +1,17 @@
 {
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
     "connect-pg-simple": "^10.0.0",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "express-flash": "^0.0.2",
     "express-session": "^1.18.0",
     "express-validator": "^7.2.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "socket.io": "^4.8.0"
   },
   "name": "mini-social-media-app",
   "version": "1.0.0",
