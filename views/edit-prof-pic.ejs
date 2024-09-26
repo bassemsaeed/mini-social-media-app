@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,21 +15,26 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/edit-prof-pic.css">
+    <link rel="stylesheet" href="/edit-prof-pic.css" />
     <title>Edit Profile Pic</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <form action="/edit-prof-pic" method="POST">
-            <input type="text" name="pfp_link" placeholder="Enter a pfp link ..." required>
-            <button type="submit">Update</button>
+      <form action="/edit-prof-pic" method="POST">
+        <input
+          type="text"
+          name="pfp_link"
+          placeholder="Enter a pfp link ..."
+          required
+        />
+        <button type="submit">Update</button>
 
-           <% if(locals.errs) { %>
-                <ul>
-                    <li style="color: red;"> <%= errs[0].msg %></li>
-                </ul>
-           <% } %>
-        </form>
+        <% if(locals.errs) { %>
+        <ul>
+          <li style="color: red"><%= errs[0].msg %></li>
+        </ul>
+        <% } %>
+      </form>
     </main>
-</body>
+  </body>
 </html>

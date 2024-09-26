@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/edit-prof-pic.css" />
+    <title>Request To Join</title>
+  </head>
+  <body>
+    <main>
+      <form action="/join" method="POST">
+        <h2>
+          Enter the code to become member and be able to see who wrote the posts
+          and theri pfps
+        </h2>
+        <input
+          type="text"
+          name="join_pass"
+          placeholder="Enter a code (code is 1234)"
+          required
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet"
-        />
-        <link rel="stylesheet" href="/edit-prof-pic.css">
-        <title>Request To Join</title>
-    </head>
-    <body>
-        <main>
-            <form action="/join" method="POST">
-                <h2>Enter the code to become member and be able to see who wrote the posts and theri pfps</h2>
-                <input type="text" name="join_pass" placeholder="Enter a code (code is 1234)" required>
-                <button type="submit">Send Request</button>
-    
-               <% if(locals.err) { %>
-                    <ul>
-                        <li style="color: red;"> <%= err %></li>
-                    </ul>
-               <% } %>
-            </form>
-        </main>
-    </body>
+        <button type="submit">Send Request</button>
+
+        <% if(locals.err) { %>
+        <ul>
+          <li style="color: red"><%= err %></li>
+        </ul>
+        <% } %>
+      </form>
+    </main>
+  </body>
 </html>
