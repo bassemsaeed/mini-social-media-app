@@ -285,6 +285,12 @@ app.post("/admin", isAuth, async (req, res) => {
     return;
   }
 
+
+  if(user.member_status === 'admin') {
+    res.render("join", { err: "You are already a member and an admin" });
+    return;
+  }
+
   await pool.query(`UPDATE users SET member_status = 'admin' WHERE id = $1`, [
     user.id,
   ]);
@@ -300,6 +306,10 @@ app.post("/join", isAuth, async (req, res) => {
     return;
   }
 
+  if(user.member_status === 'admin') {
+    res.render("join", { err: "You are already a member and an admin" });
+    return;
+  }
   await pool.query(`UPDATE users SET member_status = 'member' WHERE id = $1`, [
     user.id,
   ]);
@@ -310,3 +320,6 @@ app.post("/join", isAuth, async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on - http://localhost:${PORT}`);
 });
+
+
+export default app;
